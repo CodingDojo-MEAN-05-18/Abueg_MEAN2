@@ -14,20 +14,23 @@ export class AppComponent {
   onButtonClick(value) {
     alert('Value is: ' + value);
     console.log('Value is: ' + value);
-    if (value === 1) {
+    if (value === 'PST') {
       this.color = 'yellow';
-    } else if (value === 0) {
-      this.color = 'white';
+    } else if (value === 'MST') {
+      this.color = 'green';
     }
-    this.color = 'blue';
+    this.color = 'white';
   }
   zoneData(timezone) {
     this.time = new Date();
     if (timezone === 'MST') {
       this.time.setHours(this.time.getHours() + 1);
+      this.color = 'yellow';
     } else if (timezone === 'CST') {
       this.time.setHours(this.time.getHours() + 2);
+      this.color = 'yellow';
     }
     this.nullZone = timezone;
+    this.color = 'white';
   }
 }
