@@ -4,9 +4,4 @@ export class User {
   subject: string;
   content: string;
   value: string;
-  // maybe i do not need the constructor
-  // constructor() {
-  //   this.value = Math.round(Math.random() * 1000);
-  //   console.log(this.value);
-  // }
 }

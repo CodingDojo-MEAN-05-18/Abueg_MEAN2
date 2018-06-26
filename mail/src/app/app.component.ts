@@ -11,8 +11,22 @@ import { USERS } from './data/user-data';
 export class AppComponent {
   users: Array<User> = USERS;
   title: string = 'This is my title example : ';
-  blue: string = 'blue';
-  pink: string = 'pink';
-  title2 = 'A title example where tsline is all happy!';
-  yellow: string = 'yellow';
+  getColor(value) {
+    switch (value) {
+      case '0':
+        return 'green';
+      case '1':
+        return 'blue';
+      case '2':
+        return 'yellow';
+      case '3':
+        return 'grey';
+      case '4':
+        return 'red';
+      case '5':
+        return 'maroon';
+      case '6':
+        return 'pink';
+    }
+  }
 }

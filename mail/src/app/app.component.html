@@ -17,38 +17,19 @@
 
         <tbody>
           <tr *ngFor='let user of users'>
-            <td [ngStyle]="{'color':'red'}">{{ user.email }}</td>
+            <td [ngStyle]="{'color':getColor(user.value)}">{{ user.email }}</td>
             <td>{{ user.priority }}</td>
             <td>{{ user.subject }}</td>
             <td>{{ user.content }}</td>
             <td>{{ user.value }}</td>
             <td>
-              <div class='box' [ngStyle]="{'background-color':'blue'}">
+              <div class='box' [ngStyle]="{'background-color':getColor(user.value)}">
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </section>
-
-    <section>
-
-      <legend>{{ title2 }}</legend>
-      <div class='box' [ngStyle]="{'background-color':'blue'}">
-      </div>
-      <div class='box' [ngStyle]="{'background-color':'pink'}">
-      </div>
-      <span><div class='box' [ngStyle]="{'background-color':'red'}">
-      </div></span>
-      <div class='box' [ngStyle]="{'background-color':'yellow'}">
-      </div>
-      <div class='box' [ngStyle]="{'background-color':'maroon'}">
-      </div>
-      <div class='box' [ngStyle]="{'background-color':'blue'}">
-      </div>
-
-    </section>
-
   </fieldset>
 
 </section>

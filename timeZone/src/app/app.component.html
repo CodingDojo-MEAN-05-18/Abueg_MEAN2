@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class='container'>
+    <fieldset class='scheduler-border'>
+      <legend>Time Zone</legend>
+      <section>
+        <button (click)='onButtonClick(1)'><span [ngStyle]="{'background-color': color, 'font-weight': 'bold'}"> PST </span></button>
+        <button (click)='onButtonClick(1)'><span [ngStyle]="{'background-color': color, 'font-weight': 'bold'}"> MST </span></button>
+        <button (click)='onButtonClick(1)'><span [ngStyle]="{'background-color': color, 'font-weight': 'bold'}"> CST </span></button>
+        <button (click)='onButtonClick(1)'><span [ngStyle]="{'background-color': color, 'font-weight': 'bold'}"> EST </span></button>
+
+        <button (click)='onButtonClick(1)'><span [ngStyle]="{'background-color': color, 'font-weight': 'bold'}"> CLEAR </span></button>
+
+
+        <button (click)='onButtonClick(0)'><span [ngClass]="{ 'on': switch }">testing ngClass</span></button>
+      </section>
+
+      <section>
+        <button (click)="zoneData('PST')"><span [ngClass]="{selected: nullZone === 'PST'}">PST</span></button>
+        <button (click)="zoneData('PST')"><span [ngClass]="{selected: nullZone === 'MST'}">MST</span></button>
+        <button (click)="zoneData('PST')"><span [ngClass]="{selected: nullZone === 'CST'}">CST</span></button>
+      </section>
+      <section>
+        <h2>{{ time | date:'medium'}}</h2>
+      </section>
+    </fieldset>
+  </div>
+
+</body>
+
+</html>

@@ -64,22 +64,3 @@ function randomValue() {
   const r = random.toString();
   return r;
 }
-
-function getColor(value) {
-  switch (value) {
-    case '0':
-      return 'green';
-    case '1':
-      return 'blue';
-    case '2':
-      return 'yellow';
-    case '3':
-      return 'grey';
-    case '4':
-      return 'red';
-    case '5':
-      return 'maroon';
-    case '6':
-      return 'pink';
-  }
-}
