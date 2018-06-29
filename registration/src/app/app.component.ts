@@ -12,7 +12,8 @@ export class AppComponent {
   users = [];
   formName: string = '';
   formEmail: string = '';
-  formStatement: string = '';
+  // formStatement: string = '';
+  today = new Date();
 
   onSubmit(event: Event, formData: NgForm) {
     console.log(formData);

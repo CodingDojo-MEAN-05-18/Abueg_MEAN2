@@ -14,8 +14,8 @@
       <h1>Registration</h1>
 
       <div *ngIf="formName">
-        Thank you for registering with us {{ formName | uppercase }}. We have just sent a confirmation email at {{ formEmail | lowercase
-        }}.
+        Thank you, {{ formName | uppercase }}, for registering with us @ {{today | date:'short'}}. We have just sent a confirmation
+        email at {{ formEmail | lowercase }}.
       </div>
 
       <fieldset class='scheduler-border'>
