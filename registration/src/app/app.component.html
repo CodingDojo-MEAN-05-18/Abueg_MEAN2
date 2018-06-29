@@ -12,10 +12,16 @@
   <div class='container'>
     <section>
       <h1>Registration</h1>
+
+      <div *ngIf="formName">
+        Thank you for registering with us {{ formName | uppercase }}. We have just sent a confirmation email at {{ formEmail | lowercase
+        }}.
+      </div>
+
       <fieldset class='scheduler-border'>
         <legend>Account Information</legend>
         <!-- might need a form data event "(submit)=""onSubmit($event, formData)"" -->
-        <form (submit)="onSubmit()" #formData='ngForm'>
+        <form (submit)="onSubmit($event, formData)" #formData='ngForm'>
           <div>
             Email Address:
             <input type="email" placeholder='Email here...' name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
@@ -76,15 +82,23 @@
             State:
             <input type="text" name="state" required minlength="10" maxlength="24" [(ngModel)]="user.state" #state='ngModel' />
           </div> -->
-          <div class='radio'>
+          <div>
             Feeling Lucky?
-            <label class='radio_label' for=""><input type="radio" name="lucky" value='yes' required [(ngModel)]="user.lucky" #lucky='ngModel' /> YES</label>
-            <label class='radio_label' for=""><input type="radio" name='lucky' value='no' required [(ngModel)]='user.lucky' #lucky='ngModel' /> NO</label>
-            <div *ngIf='lucky.errors && (lucky.dirty || lucky.touched || lucky.invalid)'>
+            <div class='radio'>
+              <label class='radio_label' for="">
+                <input type="radio" name="lucky" value='yes' required [(ngModel)]="user.lucky" #lucky='ngModel' /> YES
+              </label>
+              <label class='radio_label' for="">
+                <input type="radio" name='lucky' value='no' required [(ngModel)]='user.lucky' #lucky='ngModel' /> NO
+              </label>
+            </div>
+            <div *ngIf='lucky.errors && (lucky.dirty || lucky.touched)'>
               <p *ngIf='lucky.errors.required'> How You Feel is Required. </p>
             </div>
           </div>
-          <div *ngIf='formData.invalid'>Please fill out required fields before submission.
+
+          <div *ngIf='formData.invalid'>
+            Please fill out required fields before submission.
           </div>
           <input [disabled]='formData.invalid' type="submit" class="btn btn-primary">
         </form>
