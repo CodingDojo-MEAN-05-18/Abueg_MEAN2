@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Event Binding / Form</title>
 </head>
 
 <body>
@@ -14,9 +14,33 @@
       <fieldset class='scheduler-border'>
         <legend>Event Binding Examples</legend>
         <button (click)='onButtonClick($event)'>Click here!</button>
-
       </fieldset>
+    </section>
 
+    <section>
+      <fieldset>
+        <legend>Please Enter User Email</legend>
+        <form (submit)="onSubmit()">
+          <div>
+            Email: <input type="text" name="email" required minlength="4" maxlength="24" [(ngModel)]="user.email" #email="ngModel">            {{ email.errors | json }} {{ email.valid | json }}
+            <div *ngIf="!email.valid">
+              Email Address Length Error
+            </div>
+          </div>
+
+          <div>
+            Password <input type="text" name="password" required minlength="6" maxlength="24" pattern='^([a-zA-Z0-9@*#]{8,15})$'
+              [(ngModel)]="user.password" #password="ngModel" /> {{ password.errors | json }} {{ password.valid | json }}
+
+            <div *ngIf="!password.valid">
+              Error: Password Must be 6-24 Characters.
+            </div>
+
+          </div>
+          <input type="submit">
+        </form>
+        {{ user | json }}
+      </fieldset>
     </section>
   </div>
 </body>

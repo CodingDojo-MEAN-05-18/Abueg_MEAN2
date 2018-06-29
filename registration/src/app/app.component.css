@@ -1,0 +1,9 @@
+/* .ng-invalid { }
+.ng-valid { }
+.ng-untouched { }
+.ng-touched { }
+.ng-dirty { }
+.ng-pristine { } */
+.radio_label {
+  margin: 0px 10px;
+}

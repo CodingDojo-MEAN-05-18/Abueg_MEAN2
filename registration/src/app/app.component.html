@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration</title>
+</head>
+
+<body>
+  <div class='container'>
+    <section>
+      <h1>Registration</h1>
+      <fieldset class='scheduler-border'>
+        <legend>Account Information</legend>
+        <!-- might need a form data event "(submit)=""onSubmit($event, formData)"" -->
+        <form (submit)="onSubmit()" #formData='ngForm'>
+          <div>
+            Email Address:
+            <input type="email" placeholder='Email here...' name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              minlength="4" maxlength="24" [(ngModel)]="user.email" #email='ngModel' />
+            <!-- <div *ngIf='!email.valid'>Email Address Length Required 4-24 Characters.
+            </div> -->
+            <div *ngIf='email.errors && (email.dirty || email.touched || email.invalid)'>
+              <p *ngIf='email.errors.required'> Email is required. </p>
+              <p *ngIf='email.errors.pattern'> Email must be valid. </p>
+              <p *ngIf='email.errors.minlength'> Email Address Length Required {{email.errors.minlength.requiredLength}}-24 Characters. </p>
+            </div>
+            <!-- {{ email.errors | json }} {{ email.valid | json }} -->
+          </div>
+          <div>
+            First Name:
+            <input type="text" placeholder="First Name..." name="first_name" required minlength="2" maxlength="24" [(ngModel)]="user.first_name"
+              #first_name='ngModel' />
+            <div *ngIf='first_name.errors && (first_name.dirty || first_name.touched || first_name.invalid)'>
+              <p *ngIf='first_name.errors.required'> First Name is Required. </p>
+              <p *ngIf='first_name.errors.minlength'>First Name Must be {{first_name.errors.minlength.requiredLength}}-24 Characters.</p>
+            </div>
+          </div>
+          <!--
+          <div>
+            Last Name:
+            <input type="text" name="last_name" required minlength="4" maxlength="24" [(ngModel)]="user.last_name" #last_name='ngModel'
+            />
+          </div> -->
+
+          <!-- <div>
+            Password:
+            <input type="text" name="password" required minlength="10" maxlength="24" pattern="^([a-zA-Z0-9@*#]{8,15})$" [(ngModel)]="user.password"
+              #password='ngModel' />
+          </div>
+
+          <div>
+            Confirm Password:
+            <input type="text" name="password_confirm" required minlength="10" maxlength="24" pattern="^([a-zA-Z0-9@*#]{8,15})$" [(ngModel)]="user.password_confirm"
+              #password_confirm='ngModel' />
+          </div> -->
+
+          <!-- <div>
+            Address:
+            <input type="text" name="address" required minlength="5" maxlength="24" [(ngModel)]="user.address" #address='ngModel' />
+          </div>
+
+          <div>
+            Unit / Apartment Number:
+            <input type="number" name="unit" required minlength="1" maxlength="6" [(ngModel)]="user.unit" #unit='ngModel' />
+          </div>
+
+          <div>
+            City:
+            <input type="text" name="city" required minlength="10" maxlength="24" [(ngModel)]="user.city" #city='ngModel' />
+          </div> -->
+
+          <!-- <div>
+            State:
+            <input type="text" name="state" required minlength="10" maxlength="24" [(ngModel)]="user.state" #state='ngModel' />
+          </div> -->
+          <div class='radio'>
+            Feeling Lucky?
+            <label class='radio_label' for=""><input type="radio" name="lucky" value='yes' required [(ngModel)]="user.lucky" #lucky='ngModel' /> YES</label>
+            <label class='radio_label' for=""><input type="radio" name='lucky' value='no' required [(ngModel)]='user.lucky' #lucky='ngModel' /> NO</label>
+            <div *ngIf='lucky.errors && (lucky.dirty || lucky.touched || lucky.invalid)'>
+              <p *ngIf='lucky.errors.required'> How You Feel is Required. </p>
+            </div>
+          </div>
+          <div *ngIf='formData.invalid'>Please fill out required fields before submission.
+          </div>
+          <input [disabled]='formData.invalid' type="submit" class="btn btn-primary">
+        </form>
+        <!-- {{ user | json }} -->
+      </fieldset>
+    </section>
+  </div>
+</body>
+
+</html>
