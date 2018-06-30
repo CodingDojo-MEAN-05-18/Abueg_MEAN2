@@ -1,0 +1,16 @@
+.img_adjust {
+  width: 50px;
+  vertical-align: right;
+  display: inline-block;
+}
+
+.block {
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
+  background-color: cornsilk;
+  color: darkgray;
+  border: 2px solid black;
+  display: inline-block;
+  text-align: center;
+}

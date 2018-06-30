@@ -1,3 +1,42 @@
-<p>
-  power works!
-</p>
+<div class='container'>
+  <section>
+
+    <fieldset>
+      <legend>Select Power Level</legend>
+      <img src="../../assets/moon.jpg" alt="" class='img_adjust'>
+      <!-- <form (submit)='onSubmit()'>
+        <p>Initial Power Level: </p> <input type="number" required min='1' max="100" [(ngModel)]='power'>
+        <input type="submit" class="btn btn-primary">
+      </form> -->
+      <input type="number" max='100' min='1' [(ngModel)]='power'>
+    </fieldset>
+  </section>
+  <section>
+    <app-human [power]='power' class='block'></app-human>
+    <app-saiyan [power]='power' class='block'></app-saiyan>
+    <app-super-saiyan [power]='power' class='block'></app-super-saiyan>
+    <app-super-saiyan-two [power]='power' class='block'></app-super-saiyan-two>
+    <app-super-saiyan-three [power]='power' class='block'></app-super-saiyan-three>
+    <app-super-saiyan-four [power]='power' class='block'></app-super-saiyan-four>
+  </section>
+</div>
+
+
+
+
+<!-- DOJO SOLUTION -->
+<!-- <header>
+  <section class="left">
+    <span class="title">Adjust Incoming Power Level: </span>
+    <input type="number" max="100" min="0" [(ngModel)]="power">
+  </section>
+  <img src="../../assets/goku.jpg" alt="">
+</header>
+<section class="body">
+  <app-human [power]="power" class='card'></app-human>
+  <app-saiyan [power]="power" class='card'></app-saiyan>
+  <app-supersaiyan [power]="power" class='card'></app-supersaiyan>
+  <app-supersaiyantwo [power]="power" class='card'></app-supersaiyantwo>
+  <app-supersaiyanthree [power]="power" class='card'></app-supersaiyanthree>
+  <app-supersaiyanfour [power]="power" class='card'></app-supersaiyanfour>
+</section> -->

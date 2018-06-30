@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-super-saiyan',
   templateUrl: './super-saiyan.component.html',
-  styleUrls: ['./super-saiyan.component.css']
+  styleUrls: ['./super-saiyan.component.css'],
 })
 export class SuperSaiyanComponent implements OnInit {
+  @Input() power;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
