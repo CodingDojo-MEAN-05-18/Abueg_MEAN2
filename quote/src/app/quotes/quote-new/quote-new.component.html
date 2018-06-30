@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quote New</title>
+</head>
+
+<body>
+
+  <form (submit)='onSubmit($event, formData' #formData='ngForm'>
+
+    <div>
+      <textarea class='cleanup' placeholder='Quote here please...' required minlength="5" maxlength='240' name="quote" cols="100"
+        rows="10" [(ngModel)]='quote.quote' #quote='ngModel'></textarea>
+      <div *ngIf='quote.errors && (quote.dirty || quote.touched || quote.required)'>
+        <p *ngIf='quote.errors.required'>Quote is required.</p>
+        <p *ngIf='quote.errors.minlength'>Quote length requirement: {{quote.errors.minlength.requiredLength}} - 240 characters.</p>
+      </div>
+    </div>
+
+    <div>
+      Author:
+      <input class="cleanup" type="text" placeholder='Author Name...' required minlength="2" maxlength="40" name="author" [(ngModel)]='quote.author'
+        #author='ngModel' />
+      <div *ngIf='author.errors && (author.dirty || author.touched || author.invalid)'>
+        <p *ngIF='author.errors.required'>Author is required.</p>
+        <p *ngIf='author.errors.minlength'>Author name length: {{author.errors.minlength.requiredLength}} - 40 characters.</p>
+      </div>
+    </div>
+
+    <input [disabled]='formData.invalid' type="submit" class="btn btn-primary">
+  </form>
+
+</body>
+
+</html>
