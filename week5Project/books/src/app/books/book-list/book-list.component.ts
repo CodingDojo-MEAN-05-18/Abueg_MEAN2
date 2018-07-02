@@ -1,21 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Book } from '../../book';
-import { BOOKS } from '../../data/book-data';
+// import { BOOKS } from '../../data/book-data';
+import { BookService } from '../../services';
+
+import { TitleizePipe } from '../../titleize.pipe';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
+  // local injection requires YOU to provide the providers array
+  providers: [TitleizePipe],
 })
-export class BookListComponent implements OnInit {
-  books: Array<Book> = BOOKS;
-
+export class BookListComponent implements OnInit, OnDestory {
+  books: Array<Book> = [];
+  sub: Subscription;
   selectedBook: Book;
+  filter: Book = new Book();
+  // most things we inject will BE PRIVATE
+  constructor(
+    private titleize: TitleizePipe,
+    // bookService is injected
+    private bookService: BookService
+  ) {}
+  // use the lifestyle hook rather than put it in your contructor
+  ngOnInit() {
+    // this.bookService = null; // protects you from Overwriting your own service
+    this.sub = this.bookService.getBooks().subscribe(books => {
+      this.books = books;
+      this.books.forEach(book => {
+        book.author = this.titleize.transform(book.author);
+      });
+    });
+  }
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnDestory() {
+    this.sub.unsubscribe();
+  }
 
   onSelect(book: Book) {
     console.log('selecting book: ', book);
@@ -31,5 +53,20 @@ export class BookListComponent implements OnInit {
   onCreate(book: Book) {
     console.log('creating book: ', book);
     this.books.push(book);
+  }
+  onClick(event: Event) {
+    console.log('stopping button prop.', event);
+    event.stopPropagation();
+  }
+  clearFilter(): void {
+    this.filter = new Book(false);
+  }
+  onDelete(bookToDelete: Book) {
+    console.log('deleting book');
+    this.bookService.deleteBook(bookToDelete).subscribe(deletedBook => {
+      console.log('deleted book', deletedBook);
+
+      this.books = this.books.filter(book => book.id !== deletedBook.id);
+    });
   }
 }

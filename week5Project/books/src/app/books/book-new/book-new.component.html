@@ -1,7 +1,8 @@
 <section>
-  <fieldset>
-    <legend>Add A Book </legend>
+  <fieldset class='scheduler-border'>
+    <legend class='scheduler-border'>Add / Create A Book </legend>
     {{ bookForm.value | json }}
+    <!-- lecture from April Jason had {{bookForm.valid | json}} -->
     <form (submit)='bookForm.valid && onSubmit($event, bookForm)' #bookForm='ngForm'>
       <div>
         <label for="">Title</label>
