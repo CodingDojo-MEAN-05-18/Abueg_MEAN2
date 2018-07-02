@@ -13,7 +13,7 @@ import { TitleizePipe } from '../../titleize.pipe';
   // local injection requires YOU to provide the providers array
   providers: [TitleizePipe],
 })
-export class BookListComponent implements OnInit, OnDestory {
+export class BookListComponent implements OnInit, OnDestroy {
   books: Array<Book> = [];
   sub: Subscription;
   selectedBook: Book;
@@ -35,7 +35,7 @@ export class BookListComponent implements OnInit, OnDestory {
     });
   }
 
-  ngOnDestory() {
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
@@ -59,7 +59,7 @@ export class BookListComponent implements OnInit, OnDestory {
     event.stopPropagation();
   }
   clearFilter(): void {
-    this.filter = new Book(false);
+    this.filter = new Book();
   }
   onDelete(bookToDelete: Book) {
     console.log('deleting book');

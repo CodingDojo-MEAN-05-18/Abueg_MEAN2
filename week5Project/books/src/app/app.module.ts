@@ -18,14 +18,18 @@ import { SearchPipe } from './search.pipe';
 import * as fromBooks from './books';
 import * as fromServices from './services';
 
+import { AppRoutingModule } from './app-routing.module';
+import { NavComponent } from './nav/nav.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     TitleizePipe,
     SearchPipe,
     ...fromBooks.components,
+    NavComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [...fromServices.services],
   bootstrap: [AppComponent],
 })

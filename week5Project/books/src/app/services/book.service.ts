@@ -17,9 +17,6 @@ export class BookService {
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.base);
-
-    // turns into a stream of books array
-    // return of(BOOKS);
   }
 
   createBook(book: Book): Observable<Book> {
