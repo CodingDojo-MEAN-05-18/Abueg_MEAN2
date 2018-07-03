@@ -17,7 +17,15 @@ const routes: Routes = [
     component: fromBooks.BookNewComponent,
   },
   {
+    path: ':id',
+    component: fromBooks.BookDetailComponent,
+  },
+  {
     path: 'books/:id',
+    component: fromBooks.BookDetailComponent,
+  },
+  {
+    path: 'books/books/:id',
     component: fromBooks.BookDetailComponent,
   },
 ];
