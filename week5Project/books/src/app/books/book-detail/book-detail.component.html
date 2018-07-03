@@ -1,5 +1,8 @@
-<section *ngIf='book'>
+<section>
   <fieldset class='scheduler-border'>
+    <div *ngIf='errorMessage'>
+      <p>{{errorMessage}}</p>
+    </div>
     <legend>Selected Book</legend>
     <div>
       <p>ID: {{ book?.id }}</p>

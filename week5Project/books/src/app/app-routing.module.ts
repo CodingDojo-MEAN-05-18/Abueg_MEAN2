@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'books/new',
     component: fromBooks.BookNewComponent,
   },
+  {
+    path: 'books/:id',
+    component: fromBooks.BookDetailComponent,
+  },
 ];
 
 @NgModule({
