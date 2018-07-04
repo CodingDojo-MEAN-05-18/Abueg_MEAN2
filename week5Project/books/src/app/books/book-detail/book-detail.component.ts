@@ -25,25 +25,27 @@ export class BookDetailComponent implements OnInit {
     //   const id = params.get('id');
     //   this.bookService.getBook(id).subscribe(book => (this.book = book));
     // });
-    this.route.paramMap
-      .pipe(
-        switchMap(params => {
-          const id = params.get('id');
-          console.log(id);
-          // below is an observable.
-          return this.bookService.getBook(id);
-        })
-      )
-      .subscribe(
-        book => (this.book = book),
-        error => {
-          console.log('error', error);
-          this.errorMessage = error.error;
 
-          setTimeout(() => {
-            this.router.navigateByUrl('/');
-          }, 3000);
-        }
-      );
+    // this.route.paramMap
+    //   .pipe(
+    //     switchMap(params => {
+    //       const id = params.get('id');
+    //       console.log(id);
+    //       // below is an observable.
+    //       return this.bookService.getBook(id);
+    //     })
+    //   )
+    //   .subscribe(
+    //     book => (this.book = book),
+    //     error => {
+    //       console.log('error', error);
+    //       this.errorMessage = error.error;
+
+    //       setTimeout(() => {
+    //         this.router.navigateByUrl('/');
+    //       }, 3000);
+    //     }
+    //   );
+    this.book = this.route.snapshot.data.book as Book;
   }
 }

@@ -27,7 +27,8 @@
     </thead>
 
     <tbody>
-      <!-- <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]="['books', book.id]"> -->
+      <!-- the / in front of books make the path absolute -->
+      <!-- <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]="['/books', book.id]"> -->
       <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]='book.id'>
         <td>{{ book.id }}</td>
         <td>{{ book.title | titleize }}</td>
