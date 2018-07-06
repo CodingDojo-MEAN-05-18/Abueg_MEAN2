@@ -1,0 +1,25 @@
+<div class='container'>
+  <button (click)='pushOne()'> Push the one random number </button>
+  <ul>
+    <li *ngFor='let number of numbers'>
+      {{ number }}
+    </li>
+  </ul>
+
+  <p>{{random}}</p>
+  <section>
+    <button (click)='createNum()'>
+      Add Random Number to Array.
+    </button>
+    <ul>
+      <li *ngFor='let number of numbers'>
+        {{ number }}
+      </li>
+    </ul>
+    <ul>
+      <li *ngFor='let numberB of numbersB'>
+        {{ numberB }}
+      </li>
+    </ul>
+  </section>
+</div>
