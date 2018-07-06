@@ -12,7 +12,8 @@ import { Book } from '../book';
 })
 export class BookService {
   // mock api
-  private base = 'http://59498bce6d49df0011102cfc.mockapi.io/books';
+  // private base = 'http://59498bce6d49df0011102cfc.mockapi.io/books';
+  private base = '/api/books';
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
@@ -28,6 +29,6 @@ export class BookService {
   }
 
   deleteBook(book: Book): Observable<Book> {
-    return this.http.delete<Book>(`${this.base}/${book.id}`);
+    return this.http.delete<Book>(`${this.base}/${book._id}`);
   }
 }

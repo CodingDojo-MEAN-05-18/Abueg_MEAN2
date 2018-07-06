@@ -5,8 +5,8 @@
   <table class='table table-striped'>
     <thead>
       <th>
-        <input type="text" placeholder="id" [(ngModel)]='filter.id'>
-        <button *ngIf='filter.id' (click)='filter.id = null' class='clear'>x</button>
+        <input type="text" placeholder="id" [(ngModel)]='filter._id'>
+        <button *ngIf='filter._id' (click)='filter._id = null' class='clear'>x</button>
       </th>
       <th>
         <input type="text" placeholder="title" [(ngModel)]='filter.title'>
@@ -22,15 +22,15 @@
       </th>
       <th>
         Actions
-        <button *ngIf='filter.id || filter.title || filter.author || filter.year' (click)='clearFilter()' class='clear'>x</button>
+        <button *ngIf='filter._id || filter.title || filter.author || filter.year' (click)='clearFilter()' class='clear'>x</button>
       </th>
     </thead>
 
     <tbody>
       <!-- the / in front of books make the path absolute -->
       <!-- <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]="['/books', book.id]"> -->
-      <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]='book.id'>
-        <td>{{ book.id }}</td>
+      <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [routerLink]='book._id'>
+        <td>{{ book._id }}</td>
         <td>{{ book.title | titleize }}</td>
         <td>{{ book.author }}</td>
         <td>{{ book.year }}</td>

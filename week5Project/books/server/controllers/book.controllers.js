@@ -3,13 +3,13 @@ const Book = require('mongoose').model('Book');
 
 module.exports = {
   // get all
-  index(request, reponse) {
+  index(request, response) {
     Book.find({})
       .then(books => response.json(books))
       .catch(console.log);
   },
   // create
-  create(request, reponse) {
+  create(request, response) {
     Book.create(request.body)
       .then(book => response.json(book))
       .catch(error => {
@@ -21,19 +21,19 @@ module.exports = {
       });
   },
   // get single item/resource
-  show(request, reponse) {
+  show(request, response) {
     Book.findById(request.params.book_id)
       .then(books => response.json(book))
       .catch(console.log);
   },
   // update a resource
-  update(request, reponse) {
+  update(request, response) {
     Book.findByIdAndUpdate(request.paramas.book_id, request.body, { new: true })
       .then(book => response.json(book))
       .catch(console.log(''));
   },
   // delete item / resource
-  destroy(request, reponse) {
+  destroy(request, response) {
     Book.findByIdAndRemove(request.params.book_id)
       .then(book => response.json(book))
       .catch(console.log);
