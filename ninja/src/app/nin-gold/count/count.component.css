@@ -1,0 +1,9 @@
+.goldCount {
+  border: 2px solid darkgray;
+  border-radius: 15px;
+  width: 200px;
+  height: 100px;
+  color: darkgray;
+  background-color: darkblue;
+  padding: 15px;
+}

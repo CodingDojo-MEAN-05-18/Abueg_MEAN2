@@ -1,0 +1,5 @@
+<div class='displayDiv'>
+  <p>Last Actions: {{messages}}</p>
+  <h5>{{ myMessages | json }}</h5>
+  <button (click)='triggerEvent($event)' (click)='callParent($event)'>Click to trigger event.</button>
+</div>

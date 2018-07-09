@@ -1,0 +1,9 @@
+<!-- <h1>Nin-gold component</h1>
+<div class='container'>
+  {{ messages | json }}
+</div> -->
+<app-display [myMessages]='messages' (myEvent)='invoked($event) ' (aTaskEventEmitter)='dataFromChild($event)'>speros</app-display>
+
+<app-select (updateMessage)='insertMessage($event)'></app-select>
+
+<!-- <app-display (aTaskEventEmitter)='dataFromChild($event)'>platform</app-display> -->
