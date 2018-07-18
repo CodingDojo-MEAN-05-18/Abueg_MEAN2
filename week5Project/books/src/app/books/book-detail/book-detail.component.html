@@ -1,4 +1,5 @@
 <section>
+  <!-- <h1>testing: {{book._id}}</h1> -->
   <fieldset class='scheduler-border'>
     <div *ngIf='errorMessage'>
       <p>{{errorMessage}}</p>
@@ -13,4 +14,5 @@
       <p>Publisher: {{ book.publisher}}</p>
     </div>
   </fieldset>
+  <button (click)='onEdit(book)'>EDIT</button>
 </section>

@@ -41,9 +41,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   onSelect(book: Book) {
     console.log('selecting book: ', book);
-
     this.selectedBook = this.selectedBook === book ? null : book;
-
     // if (this.selectedBook !== this.book) {
     //   this.selectedBook = book;
     // } else {
@@ -61,11 +59,19 @@ export class BookListComponent implements OnInit, OnDestroy {
   clearFilter(): void {
     this.filter = new Book();
   }
+
+  onEdit(bookToEdit: Book) {
+    console.log('editing book');
+    this.bookService.editBook(bookToEdit).subscribe(editedBook => {
+      console.log('edited book', editedBook);
+      this.books = this.books.filter(book => book._id !== editedBook._id);
+    });
+  }
+
   onDelete(bookToDelete: Book) {
     console.log('deleting book');
     this.bookService.deleteBook(bookToDelete).subscribe(deletedBook => {
       console.log('deleted book', deletedBook);
-
       this.books = this.books.filter(book => book._id !== deletedBook._id);
     });
   }

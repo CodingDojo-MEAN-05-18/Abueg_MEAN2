@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './book-new.component.html',
   styleUrls: ['./book-new.component.css'],
 })
-export class BookNewComponent implements OnInit {
+export class BookNewComponent implements OnInit, OnDestroy {
   book = new Book();
   sub: Subscription;
 

@@ -1,10 +1,10 @@
 <!-- <app-book-new (newBook)='onCreate($event)'></app-book-new> -->
 
-
 <section>
   <table class='table table-striped'>
     <thead>
       <th>
+        ID:
         <input type="text" placeholder="id" [(ngModel)]='filter._id'>
         <button *ngIf='filter._id' (click)='filter._id = null' class='clear'>x</button>
       </th>
@@ -35,7 +35,9 @@
         <td>{{ book.author }}</td>
         <td>{{ book.year }}</td>
         <td (click)='onClick($event)'>
-          <button (click)='onDelete(book)'>delete</button>
+          <button (click)='onDelete(book)'>DELETE</button>
+          <button (click)='onEdit(book)'>EDIT</button>
+          <button (click)='onSelect(book)'>REVIEW</button>
         </td>
       </tr>
     </tbody>

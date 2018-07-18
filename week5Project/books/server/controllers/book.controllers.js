@@ -23,7 +23,7 @@ module.exports = {
   // get single item/resource
   show(request, response) {
     Book.findById(request.params.book_id)
-      .then(books => response.json(book))
+      .then(book => response.json(book))
       .catch(console.log);
   },
   // update a resource

@@ -23,6 +23,7 @@ import { NavComponent } from './nav/nav.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { BookResolve } from './resolvers';
+import { BookEditComponent } from './books/book-edit/book-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { BookResolve } from './resolvers';
     ...fromBooks.components,
     NavComponent,
     NotFoundComponent,
+    BookEditComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [...fromServices.services, BookResolve],

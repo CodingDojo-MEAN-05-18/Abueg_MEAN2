@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from '../../book';
+import { Subscription } from 'rxjs';
 
 import { switchMap } from 'rxjs/operators';
 
@@ -12,6 +13,8 @@ import { BookService } from '../../services';
   styleUrls: ['./book-detail.component.css'],
 })
 export class BookDetailComponent implements OnInit {
+  books: Array<Book> = [];
+  sub: Subscription;
   @Input() book: Book;
   errorMessage: string;
   constructor(
@@ -47,5 +50,18 @@ export class BookDetailComponent implements OnInit {
     //     }
     //   );
     this.book = this.route.snapshot.data.book as Book;
+    this.sub = this.bookService.getBooks().subscribe(books => {
+      this.books = books;
+      this.books.forEach(book => {
+        // book.author = this.titleize.transform(book.author);
+      });
+    });
+  }
+  onEdit(bookToEdit: Book) {
+    console.log('editing book');
+    this.bookService.editBook(bookToEdit).subscribe(editedBook => {
+      console.log('edited book', editedBook);
+      this.books = this.books.filter(book => book._id === editedBook._id);
+    });
   }
 }

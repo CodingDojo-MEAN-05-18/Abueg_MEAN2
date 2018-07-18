@@ -33,6 +33,10 @@ const routes: Routes = [
           book: BookResolve,
         },
       },
+      {
+        path: 'edit/:id',
+        component: fromBooks.BookEditComponent, // maybe this needs to look like route above with resolve?
+      },
     ],
   },
   {
