@@ -1,18 +1,17 @@
 const Book = require('mongoose').model('Book');
 const Review = require('mongoose').model('Review');
-// const Book = mongoose.model('Book');
 
 module.exports = {
   // get all
   index(request, response) {
-    Book.find({})
-      .then(books => response.json(books))
+    Review.find({})
+      .then(reviews => response.json(reviews))
       .catch(console.log);
   },
   // create
   create(request, response) {
-    Book.create(request.body)
-      .then(book => response.json(book))
+    Review.create(request.body)
+      .then(review => response.json(review))
       .catch(error => {
         response
           .status(500)
@@ -23,20 +22,22 @@ module.exports = {
   },
   // get single item/resource
   show(request, response) {
-    Book.findById(request.params.book_id)
-      .then(book => response.json(book))
+    Review.findById(request.params.book_id)
+      .then(review => response.json(review))
       .catch(console.log);
   },
   // update a resource
   update(request, response) {
-    Book.findByIdAndUpdate(request.params.book_id, request.body, { new: true })
-      .then(book => response.json(book))
-      .catch(console.log('update from book.controllers'));
+    Review.findByIdAndUpdate(request.params.book_id, request.body, {
+      new: true,
+    })
+      .then(review => response.json(review))
+      .catch(console.log('update from review.controllers'));
   },
   // delete item / resource
   destroy(request, response) {
-    Book.findByIdAndRemove(request.params.book_id)
-      .then(book => response.json(book))
+    Review.findByIdAndRemove(request.params.review_id)
+      .then(review => response.json(review))
       .catch(console.log);
   },
 };

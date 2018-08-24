@@ -22,7 +22,7 @@ import { Book } from '../book';
 export class BookService {
   // mock api
   // private base = 'http://59498bce6d49df0011102cfc.mockapi.io/books';
-  private base = '/api/books';
+  private base = '/api/books/';
 
   bookForm: FormGroup;
   _id: string = '';
@@ -31,6 +31,8 @@ export class BookService {
   pages: number;
   year: number;
   publisher: string = '';
+  // review: string = '';
+  review: Array<Book> = [];
   constructor(private http: HttpClient) {}
 
   // ngOnInit() {
@@ -57,6 +59,11 @@ export class BookService {
   createBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.base, book);
   }
+
+  createReview(book: Book): Observable<Book> {
+    return this.http.put<Book>(this.base + book._id, book);
+  }
+
   editBook(book: Book): Observable<Book> {
     this.bookForm.setValue({
       title: this.title,
@@ -68,7 +75,7 @@ export class BookService {
     return this.http.put<Book>(this.base, book); // maybe this should be like delete?
   }
 
-  updateBook(book: Book): Observable<Book> {
+  getBookToEdit(book: Book): Observable<Book> {
     this.bookForm.setValue({
       title: this.title,
       author: this.author,
@@ -76,7 +83,12 @@ export class BookService {
       year: this.year,
       publisher: this.publisher,
     });
-    return this.http.put<Book>(this.base, book);
+    return this.http.put<Book>(this.base, book); // maybe this should be like delete?
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    console.log('book service updating book (i hope.).');
+    return this.http.put<Book>(this.base + book._id, book);
   }
 
   deleteBook(book: Book): Observable<Book> {

@@ -16,6 +16,7 @@ import { SearchPipe } from './search.pipe';
 // import { BookService } from './services/book.service';
 
 import * as fromBooks from './books';
+// import * as fromReview from './books/book-review';
 import * as fromServices from './services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { BookResolve } from './resolvers';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { BookReviewComponent } from './books/book-review/book-review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import { BookEditComponent } from './books/book-edit/book-edit.component';
     NavComponent,
     NotFoundComponent,
     BookEditComponent,
+    BookReviewComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [...fromServices.services, BookResolve],

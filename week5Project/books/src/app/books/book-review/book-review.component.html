@@ -1,0 +1,31 @@
+<fieldset class='scheduler-border'>
+  <legend class='scheduler-border'>Write A Review for: {{book._id}} </legend>
+  <section>
+    <div class='container'>
+      <form (submit)='reviewForm.valid && onSubmit($event, reviewForm)' #reviewForm='ngForm'>
+        <div>
+          <label for="review">Review</label>
+          <br>
+          <!-- <input type="text" name='review' [(ngModel)]='book.review' required #review='ngModel' minlength='12'> {{ review.errors
+          || json }} -->
+          <input type="textarea" name='review'>
+          <!-- <div *ngIf='(review.touched || review.dirty) && review.errors'>
+            <div *ngIf='review.errors.required'>
+              enter review please
+            </div>
+            <div *ngIf='review.errors.minlength'>
+              review must be {{ review.errors.minlength.requiredLength }} characters. {{ review.errors.minlength.actualLength}} is not
+              long enough!
+            </div>
+          </div> -->
+        </div>
+        <button (click)='onSubmit(book)'>Update</button>
+      </form>
+    </div>
+  </section>
+</fieldset>
+<fieldset class='scheduler-border'>
+  <div class='container'>
+    {{book.title}}
+  </div>
+</fieldset>

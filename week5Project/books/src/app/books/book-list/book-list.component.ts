@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from '../../book';
+import { Review } from '../../review';
 // import { BOOKS } from '../../data/book-data';
 import { BookService } from '../../services';
 
@@ -15,6 +16,7 @@ import { TitleizePipe } from '../../titleize.pipe';
 })
 export class BookListComponent implements OnInit, OnDestroy {
   books: Array<Book> = [];
+  review: Array<Review> = [];
   sub: Subscription;
   selectedBook: Book;
   filter: Book = new Book();

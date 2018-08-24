@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import * as fromBooks from './books';
+import * as fromReview from './review';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BookResolve } from './resolvers/index';
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: fromBooks.BookEditComponent, // maybe this needs to look like route above with resolve?
+      },
+      {
+        path: 'review/:id',
+        component: fromBooks.BookReviewComponent,
       },
     ],
   },

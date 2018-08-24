@@ -101,17 +101,17 @@ export class BookEditComponent implements OnInit {
     });
     return this.http.put<Book>(this.base, book);
   }
-  onFormSubmit(form: NgForm) {
-    this.bookService.updateBook(this._id, form).subscribe(
-      res => {
-        let _id = res['_id'];
-        this.router.navigate(['/book-detail', _id]);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
+  // onFormSubmit(form: NgForm) {
+  //   this.bookService.updateBook(this._id, form).subscribe(
+  //     res => {
+  //       let _id = res['_id'];
+  //       this.router.navigate(['/book-detail', _id]);
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   // must add in OnDestroy under 'export class...'
   // ngOnDestory() {

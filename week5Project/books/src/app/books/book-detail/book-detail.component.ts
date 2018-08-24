@@ -64,4 +64,16 @@ export class BookDetailComponent implements OnInit {
       this.books = this.books.filter(book => book._id === editedBook._id);
     });
   }
+
+  onSubmit(book: Book) {
+    this.bookService.updateBook(book).subscribe(
+      updatedBook => {
+        console.log('updating book', updatedBook);
+        this.books.push(updatedBook);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }
