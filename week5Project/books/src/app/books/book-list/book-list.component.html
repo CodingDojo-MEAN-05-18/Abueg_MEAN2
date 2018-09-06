@@ -39,7 +39,7 @@
 
           <!-- <a [routerLink]="['books', _id]" class='button'>Update</a> -->
           <a class='link' [routerLink]='book._id'>UPDATE</a>
-          <a class='link' [routerLink]="['review', book._id]">REVIEW</a>
+          <a class='link' [routerLink]="[book._id, 'reviews']">REVIEW</a>
           <!-- <button (click)='onSelect(book)'>REVIEW</button> -->
         </td>
       </tr>

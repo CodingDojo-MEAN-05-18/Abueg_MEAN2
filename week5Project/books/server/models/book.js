@@ -30,10 +30,12 @@ const bookSchema = new Schema(
       required: [true, 'publishers are important'],
       trim: true,
     },
-    review: {
-      type: Schema.Types.ObjectId,
-      ref: 'Review',
-    },
+    review: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
   },
   {
     timestamps: true,

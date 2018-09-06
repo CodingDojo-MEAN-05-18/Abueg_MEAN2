@@ -2,9 +2,11 @@ const Book = require('mongoose').model('Book');
 const Review = require('mongoose').model('Review');
 
 module.exports = {
-  // get all
+  // get all reviews from specific book
   index(request, response) {
-    Review.find({})
+    // extract book id
+    const { book_id: book } = request.params;
+    Review.find({ book })
       .then(reviews => response.json(reviews))
       .catch(console.log);
   },

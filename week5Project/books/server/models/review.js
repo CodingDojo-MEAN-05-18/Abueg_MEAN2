@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema } = mongoose; //destructuring
 
 const reviewSchema = new Schema(
   {
@@ -18,6 +18,11 @@ const reviewSchema = new Schema(
       type: String,
       required: [true, 'please detail your experience'],
       trim: true,
+    },
+    book: {
+      type: Schema.Types.ObjectId,
+      ref: 'Book',
+      required: true,
     },
   },
   {

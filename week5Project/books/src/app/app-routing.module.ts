@@ -29,18 +29,24 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: fromBooks.BookDetailComponent,
         resolve: {
           book: BookResolve,
         },
-      },
-      {
-        path: 'edit/:id',
-        component: fromBooks.BookEditComponent, // maybe this needs to look like route above with resolve?
-      },
-      {
-        path: 'review/:id',
-        component: fromBooks.BookReviewComponent,
+
+        children: [
+          {
+            path: '',
+            component: fromBooks.BookDetailComponent,
+          },
+          {
+            path: 'edit',
+            component: fromBooks.BookEditComponent, // maybe this needs to look like route above with resolve?
+          },
+          {
+            path: 'reviews',
+            component: fromBooks.BookReviewComponent,
+          },
+        ],
       },
     ],
   },
@@ -63,7 +69,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

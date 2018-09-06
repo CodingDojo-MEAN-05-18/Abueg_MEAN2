@@ -14,8 +14,9 @@ export class Book {
   pages: number;
   year: string;
   publisher: string;
-  // review: string;
-  review: Array<Book>;
+  // review: Array<Book>;
+  // shannon has below
+  // reviews: Review[];
 
   constructor() {}
 }

@@ -32,11 +32,12 @@ export * from './review.service';
   providedIn: 'root', // is root correct? (https://angular.io/guide/dependency-injection)
 })
 export class ReviewResolver implements Resolve<Review[]> {
-  constructor(private reviewService: ReviewService) {
+  constructor(private reviewService: ReviewService) {}
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):  Observable<Review[]> {
+  ): Observable<Review[]> {
     return this.reviewService.getReviews();
   }
 }

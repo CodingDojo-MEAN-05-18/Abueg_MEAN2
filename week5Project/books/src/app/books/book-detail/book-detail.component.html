@@ -22,7 +22,7 @@
       <div *ngIf='errorMessage'>
         <p>{{errorMessage}}</p>
       </div>
-      <legend>Selected Book</legend>
+      <legend>Selected Book: "{{book.title}}"</legend>
       <!-- <div>
         <p>ID: {{ book._id }}</p>
         <p>Title: {{ book.title }}</p>
@@ -54,6 +54,23 @@
       </form>
     </fieldset>
   </div>
+</section>
+<section>
+  <fieldset>
+    <legend>Reviews for "{{book.title}}"</legend>
+    <table class='table table-striped'>
+      <thead>
+        <th>
+          Reviews
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor='let review of reviews'>
+          <td>{{ book.review }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
 </section>
 <!--
 <div class='container'>

@@ -3,10 +3,11 @@ import { Subscription } from 'rxjs';
 import { Book } from '../../book';
 import { Review } from '../../review';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import { switchMap } from 'rxjs/operators';
 
-import { BookService } from '../../services';
+import { BookService, ReviewService } from '../../services';
 import { TitleizePipe } from '../../titleize.pipe';
 
 @Component({
@@ -16,37 +17,29 @@ import { TitleizePipe } from '../../titleize.pipe';
   providers: [TitleizePipe],
 })
 export class BookReviewComponent implements OnInit {
-  books: Array<Book> = [];
-  review: Array<Review> = [];
+  // books: Array<Book> = [];
+  review = new Review();
   sub: Subscription;
   selectedBook: Book;
   filter: Book = new Book();
-  @Input() book: Book;
+  book: Book;
   errorMessage: string;
   constructor(
+    // dependancy injected into comp.
     private router: Router,
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit() {
+    console.log('hello');
     this.book = this.route.snapshot.data.book as Book;
-    this.sub = this.bookService.getBooks().subscribe(books => {
-      this.books = books;
-      this.books.forEach(book => {
-        // book.author = this.titleize.transform(book.author);
-      });
-    });
   }
-  onSubmit(book: Book) {
-    this.bookService.updateBook(book).subscribe(
-      updatedBook => {
-        console.log('updating book', updatedBook);
-        this.books.push(updatedBook);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  onSubmit(form: NgForm) {
+    console.log(form);
+    const { value: description } = form;
+    console.log(description);
+    this.reviewService.addReview(description, this.book._id).subscribe();
   }
 }
