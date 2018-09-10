@@ -35,19 +35,6 @@ export class BookService {
   review: Array<Book> = [];
   constructor(private http: HttpClient) {}
 
-  // ngOnInit() {
-  //   // this.
-  //   this.getBookToEdit(this.route.snapshot.params['id']); // should this be _id?
-  //   this.bookForm = this.formBuilder.group({
-  //     // everything on lefthand side WAS in single ticks and changed on save. :-/
-  //     title: [null, Validators.required],
-  //     author: [null, Validators.required],
-  //     pages: [null, Validators.required],
-  //     year: [null, Validators.required],
-  //     publisher: [null, Validators.required],
-  //   });
-  // }
-
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.base);
   }
@@ -58,10 +45,6 @@ export class BookService {
 
   createBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.base, book);
-  }
-
-  createReview(book: Book): Observable<Book> {
-    return this.http.put<Book>(this.base + book._id, book);
   }
 
   editBook(book: Book): Observable<Book> {

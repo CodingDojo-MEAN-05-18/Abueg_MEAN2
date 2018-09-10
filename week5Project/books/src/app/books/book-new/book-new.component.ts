@@ -45,7 +45,7 @@ export class BookNewComponent implements OnInit, OnDestroy {
     console.log('form submitted', this.book);
 
     this.sub = this.bookService.createBook(this.book).subscribe(book => {
-      console.log('book from APi', book);
+      console.log('book from API', book);
       this.router.navigateByUrl('/');
       // this.newBook.emit(book);
       // this.book = new Book();

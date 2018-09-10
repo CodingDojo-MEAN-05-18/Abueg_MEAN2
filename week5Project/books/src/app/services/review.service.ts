@@ -11,14 +11,16 @@ import { Review } from '../review';
   providedIn: 'root',
 })
 export class ReviewService {
-  // baseurl = '/api/reviews/';
+  // baseurl = '/api/reviews/'
   baseurl = '/api/books/:book_id/reviews';
+
   reviews: Review[] = [];
   constructor(private http: HttpClient) {}
 
-  getReviews(): Observable<Review[]> {
+  getReviews(bookId: string): Observable<Review[]> {
     console.log('getting all book reviews');
-    return this.http.get<Review[]>(this.baseurl);
+    const url = this.baseurl.replace(':book_id', bookId);
+    return this.http.get<Review[]>(url);
   }
 
   getSomeReviews(id): Observable<Review[]> {
@@ -34,11 +36,11 @@ export class ReviewService {
   addReview(review: Review, bookId: string): Observable<Review> {
     // line 36 is injecting the bookId from line 34, replacing the book_id in the baseurl (line 15)
     const url = this.baseurl.replace(':book_id', bookId);
-    console.log('adding a new book review? I think.. ugh', review);
+    console.log('this is the url we are sending the review to', url);
     return this.http.post<Review>(url, review);
   }
 
-  updateBike(review: Review): Observable<Review> {
+  updateReview(review: Review): Observable<Review> {
     console.log('update the review? humm....');
     return this.http.put<Review>(this.baseurl + review._id, review);
   }

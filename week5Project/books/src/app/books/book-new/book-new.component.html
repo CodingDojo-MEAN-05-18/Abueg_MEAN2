@@ -21,7 +21,7 @@
       <div>
         <label for="">Author</label>
         <input type="text" name='author' [(ngModel)]='book.author' required #author='ngModel' minlength='3'> {{ author.errors
-        || json }}
+        | json }}
         <div *ngIf='(author.touched || author.dirty) && author.errors'>
           <div *ngIf='author.errors.required'>
             enter title please

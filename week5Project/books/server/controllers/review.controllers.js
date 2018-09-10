@@ -12,8 +12,14 @@ module.exports = {
   },
   // create
   create(request, response) {
-    Review.create(request.body)
-      .then(review => response.json(review))
+    const review = request.body;
+    console.log('this is review in review.cont.', review);
+    review.book = request.params.book_id;
+    Review.create(review)
+      .then(review => {
+        console.log('review', review);
+        response.json(review);
+      })
       .catch(error => {
         response
           .status(500)
