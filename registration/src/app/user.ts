@@ -10,7 +10,8 @@ export class User {
     public unit: number = null,
     public city: string = '',
     public state: string = '',
-    public lucky: boolean = false,
+    // public lucky: boolean = false,
+    public lucky: string = '',
     public created_at: Date = new Date(),
     public updated_at: Date = new Date()
   ) {}

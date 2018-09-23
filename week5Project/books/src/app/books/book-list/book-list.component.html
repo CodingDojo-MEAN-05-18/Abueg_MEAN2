@@ -36,11 +36,8 @@
         <td>{{ book.year }}</td>
         <td (click)='onClick($event)'>
           <button class='link' (click)='onDelete(book)'>DELETE</button>
-
-          <!-- <a [routerLink]="['books', _id]" class='button'>Update</a> -->
           <a class='link' [routerLink]='book._id'>UPDATE</a>
           <a class='link' [routerLink]="[book._id, 'reviews']">REVIEW</a>
-          <!-- <button (click)='onSelect(book)'>REVIEW</button> -->
         </td>
       </tr>
     </tbody>

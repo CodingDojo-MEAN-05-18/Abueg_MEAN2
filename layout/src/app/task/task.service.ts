@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-
-  constructor() { }
+  number = Math.round(Math.random() * 1000);
+  constructor() {}
 }

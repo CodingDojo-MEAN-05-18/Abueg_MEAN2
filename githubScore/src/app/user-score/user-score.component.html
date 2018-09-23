@@ -1,0 +1,8 @@
+<div class='container'>
+  <section *ngIf='userTrue'>
+    <h3>{{ score }}</h3>
+  </section>
+  <section *ngIf='userTrue ===false'>
+    <h3>User '{{username}}' was not found.</h3>
+  </section>
+</div>

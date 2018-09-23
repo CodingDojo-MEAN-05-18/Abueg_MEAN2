@@ -43,6 +43,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   onSelect(book: Book) {
     console.log('selecting book: ', book);
+    // ternary below
     this.selectedBook = this.selectedBook === book ? null : book;
     // if (this.selectedBook !== this.book) {
     //   this.selectedBook = book;

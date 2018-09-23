@@ -6,6 +6,7 @@ import { NinGoldComponent } from './nin-gold/nin-gold.component';
 import { CountComponent } from './nin-gold/count/count.component';
 import { SelectComponent } from './nin-gold/select/select.component';
 import { DisplayComponent } from './nin-gold/display/display.component';
+import { NinGoldService } from './nin-gold/nin-gold.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { DisplayComponent } from './nin-gold/display/display.component';
     DisplayComponent,
   ],
   imports: [BrowserModule],
-  providers: [NinGoldComponent],
+  providers: [NinGoldService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

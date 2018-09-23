@@ -1,0 +1,20 @@
+<!-- <div class='container'>
+  <h3>User Info Component</h3>
+  <form (submit)='onSubmit()'>
+    <input type="text" name='info' [(ngModel)]='info'>
+    <input type="submit">
+  </form>
+</div> -->
+
+<div class='container'>
+  <section>
+    <h3>Git Score Assignment</h3>
+    <form (submit)='calculateScore(form)' #form='ngForm'>
+      <label for="username">
+        Git Username Here:
+        <input type="text" name="username" required[ngModel]='username'>
+        <button [disabled]='form.invalid'>Get Arbitrary Score!</button>
+      </label>
+    </form>
+  </section>
+</div>

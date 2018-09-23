@@ -28,6 +28,10 @@ const routes: Routes = [
         component: fromBooks.BookNewComponent,
       },
       {
+        path: 'edit',
+        component: fromBooks.BookEditComponent,
+      },
+      {
         path: ':id',
         resolve: {
           book: BookResolve,
